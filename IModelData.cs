@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Commarc.Interface
+/*
+ * Contract Class for any kind of Data or Repository tier C# application
+ * Target tier: Data or Repository
+ * .Net Framework build: 4.7
+ */
+
+namespace Commarc.Interface.Data
 {
     public interface IModelData
     {
-        #region "Metodos indicados como publicos"
+        #region "Public Methods"
         bool Save();
         bool Validate();
         void AddFieldRequired(string NomeCampo);
         #endregion
 
-        #region "Metodos indicados como privados"
+        #region "Private Methods"
         bool Update();
         bool Insert();
         bool Delete();
@@ -22,10 +25,19 @@ namespace Commarc.Interface
         void FillNew();
         #endregion
 
-        #region "Propriedades"
-        bool IsNew { get; set; }
+        #region "Properties"
+        bool IsNew { get; }
+
+        /*
+         * This property might be 'true' when it intend deleted the data object. This property isn't a operation itself. It will be readed by 'Save()' method.
+         */
         bool IsDeleted { get; set; }
+        
         List<String> GetFieldsRequired { get; }
+        
+        /*
+         * This property should be 'true' when happen any modification in any attribute of data object
+         */
         bool IsChanged { get; }
         #endregion
     }
