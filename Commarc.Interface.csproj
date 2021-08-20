@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IModelDataDapperAsync.cs" />
     <Compile Include="IModelData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
